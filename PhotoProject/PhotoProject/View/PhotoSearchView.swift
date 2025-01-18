@@ -28,7 +28,6 @@ final class PhotoSearchView: BaseView {
     }()
     
 
-    
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -41,6 +40,10 @@ final class PhotoSearchView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        configureHierarchy()
+        configureLayout()
+        configureView()
     }
     
     override func configureHierarchy() {
@@ -61,14 +64,14 @@ final class PhotoSearchView: BaseView {
         }
         
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(stackView.snp.bottom)
+            $0.top.equalTo(safeAreaLayoutGuide)
             $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
     override func configureView() {
-//        collectionView.register(ItemCollectionViewCell.self, forCellWithReuseIdentifier: "ItemCollectionViewCell")
-        collectionView.backgroundColor = .clear
+        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
+        collectionView.backgroundColor = .black
     }
     
     
