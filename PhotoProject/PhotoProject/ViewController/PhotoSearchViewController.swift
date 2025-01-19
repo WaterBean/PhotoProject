@@ -51,6 +51,7 @@ final class PhotoSearchViewController: UIViewController {
         guard let text = searchController.searchBar.text else { print("SearchBar something wrong"); return }
         NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: mainView.sortButton.option, color: color) {
             self.photoResponseList = $0
+            self.mainView.searchStatusLabel.text = $0.total == 0 ? "검색 결과가 없습니다." : ""
         }
         
     }
@@ -115,6 +116,15 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
             cell.photoImageView.kf.cancelDownloadTask() // 이게 되는지 어떻게 확인?
         }
         print(#function)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = PhotoDetailsViewController()
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        navigationItem.backBarButtonItem = backBarButtonItem
+        
+        show(vc, sender: self)
     }
 }
 

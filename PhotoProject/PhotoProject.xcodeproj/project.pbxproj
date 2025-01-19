@@ -27,6 +27,8 @@
 		557248332D3CDC62006C19CF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248322D3CDC62006C19CF /* APIKey.swift */; };
 		557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */; };
 		557248372D3CE6DF006C19CF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */; };
+		5572483A2D3D0241006C19CF /* PhotoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248392D3D0241006C19CF /* PhotoDetailsView.swift */; };
+		5572483F2D3D0390006C19CF /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		557248322D3CDC62006C19CF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		557248392D3D0241006C19CF /* PhotoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsView.swift; sourceTree = "<group>"; };
+		5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				557248282D3CC458006C19CF /* TabBarViewController.swift */,
 				55072E312D3A869200CB8107 /* PhotoSearchViewController.swift */,
 				5572482A2D3CC668006C19CF /* TrendingPhotosByTopicViewController.swift */,
+				5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -121,9 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				557248382D3CF4B4006C19CF /* BaseView */,
+				5572483B2D3D0247006C19CF /* CollectionViewCell */,
 				55072E7E2D3A88E700CB8107 /* PhotoSearchView.swift */,
-				55072E822D3BE75E00CB8107 /* PhotoCollectionViewCell.swift */,
-				557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */,
+				557248392D3D0241006C19CF /* PhotoDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +165,15 @@
 				557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		5572483B2D3D0247006C19CF /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				55072E822D3BE75E00CB8107 /* PhotoCollectionViewCell.swift */,
+				557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,10 +265,12 @@
 				55072E812D3A898B00CB8107 /* BaseView.swift in Sources */,
 				5572482E2D3CCB17006C19CF /* PhotoSearch.swift in Sources */,
 				5572482B2D3CC668006C19CF /* TrendingPhotosByTopicViewController.swift in Sources */,
+				5572483A2D3D0241006C19CF /* PhotoDetailsView.swift in Sources */,
 				557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */,
 				557248332D3CDC62006C19CF /* APIKey.swift in Sources */,
 				55072E852D3BEAAC00CB8107 /* NetworkManager.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
+				5572483F2D3D0390006C19CF /* PhotoDetailsViewController.swift in Sources */,
 				55072E7F2D3A88E700CB8107 /* PhotoSearchView.swift in Sources */,
 				557248372D3CE6DF006C19CF /* BaseCollectionViewCell.swift in Sources */,
 				55072E832D3BE75E00CB8107 /* PhotoCollectionViewCell.swift in Sources */,
