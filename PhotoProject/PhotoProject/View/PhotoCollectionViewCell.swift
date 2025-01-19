@@ -7,18 +7,21 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class PhotoCollectionViewCell: UICollectionViewCell {
     let photoImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        image.tintColor = .brown
         return image
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configureHierarchy()
+        configureLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -33,5 +36,9 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         photoImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    func updateCell(image: String) {
+        photoImageView.kf.setImage(with: URL(string: image))
     }
 }

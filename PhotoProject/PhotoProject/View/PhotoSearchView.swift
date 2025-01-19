@@ -26,7 +26,6 @@ final class PhotoSearchView: BaseView {
         stack.spacing = 6
         return stack
     }()
-    
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
         let layout = UICollectionViewFlowLayout()
@@ -37,6 +36,7 @@ final class PhotoSearchView: BaseView {
         return layout
     }())
     
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,7 +71,7 @@ final class PhotoSearchView: BaseView {
     
     override func configureView() {
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .systemOrange
     }
     
     

@@ -12,9 +12,37 @@ final class NetworkManager {
     static let shared = NetworkManager()
     private init () {}
     
-    func fetchSearchPhotos(query: String,completion: @escaping ()-> Void ) {
+    func fetchSearchPhotos(query: String, page: Int, per_page: Int, order_by: OrderBy, color: Color, completion: @escaping ([Photo])-> Void ) {
+        let endpoint = "https://api.unsplash.com/search/photos"
+        let parameters: Parameters = ["query": query, "page": page, "per_page": per_page, "order_by": order_by.rawValue, "color": color.rawValue, "client_id": APIKey.photoAccessKey]
         
-        print("phto")
+        AF.request(endpoint, parameters: parameters)
+            .validate()
+            .responseDecodable(of: PhotoSearchResponse.self) { response in
+                switch response.result {
+                case .success(let result):
+                    completion(result.results)
+                case . failure(let error):
+                    print(error)
+                    break
+                }
+                
+            }
     }
 }
 
+
+enum OrderBy: String {
+    case latest
+    case relevant
+}
+
+enum Color: String {
+    case black
+    case white
+    case yellow
+    case red
+    case purple
+    case green
+    case blue
+}
