@@ -1,13 +1,15 @@
 //
-//  BaseView.swift
+//  BaseCollectionViewCell.swift
 //  PhotoProject
 //
-//  Created by 한수빈 on 1/17/25.
+//  Created by 한수빈 on 1/19/25.
 //
 
 import UIKit
+import SnapKit
 
-class BaseView: UIView {
+class BaseCollectionViewCell: UICollectionViewCell {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -29,6 +31,5 @@ class BaseView: UIView {
     
     /// view의 속성을 변경하는 함수
     func configureView() { }
-    
     
 }

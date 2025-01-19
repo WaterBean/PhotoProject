@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class PhotoCollectionViewCell: UICollectionViewCell {
+final class PhotoCollectionViewCell: BaseCollectionViewCell {
     let photoImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -28,11 +28,11 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(photoImageView)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         photoImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }

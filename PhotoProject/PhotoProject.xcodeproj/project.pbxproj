@@ -25,6 +25,8 @@
 		5572482E2D3CCB17006C19CF /* PhotoSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572482D2D3CCB17006C19CF /* PhotoSearch.swift */; };
 		557248302D3CDAC9006C19CF /* NetworkSecret.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5572482F2D3CDAC9006C19CF /* NetworkSecret.xcconfig */; };
 		557248332D3CDC62006C19CF /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248322D3CDC62006C19CF /* APIKey.swift */; };
+		557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */; };
+		557248372D3CE6DF006C19CF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		5572482D2D3CCB17006C19CF /* PhotoSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSearch.swift; sourceTree = "<group>"; };
 		5572482F2D3CDAC9006C19CF /* NetworkSecret.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = NetworkSecret.xcconfig; sourceTree = "<group>"; };
 		557248322D3CDC62006C19CF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				55072E802D3A898B00CB8107 /* BaseView.swift */,
+				557248362D3CE6DF006C19CF /* BaseCollectionViewCell.swift */,
 				55072E7E2D3A88E700CB8107 /* PhotoSearchView.swift */,
 				55072E822D3BE75E00CB8107 /* PhotoCollectionViewCell.swift */,
+				557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,10 +243,12 @@
 				55072E812D3A898B00CB8107 /* BaseView.swift in Sources */,
 				5572482E2D3CCB17006C19CF /* PhotoSearch.swift in Sources */,
 				5572482B2D3CC668006C19CF /* TrendingPhotosByTopicViewController.swift in Sources */,
+				557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */,
 				557248332D3CDC62006C19CF /* APIKey.swift in Sources */,
 				55072E852D3BEAAC00CB8107 /* NetworkManager.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
 				55072E7F2D3A88E700CB8107 /* PhotoSearchView.swift in Sources */,
+				557248372D3CE6DF006C19CF /* BaseCollectionViewCell.swift in Sources */,
 				55072E832D3BE75E00CB8107 /* PhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
