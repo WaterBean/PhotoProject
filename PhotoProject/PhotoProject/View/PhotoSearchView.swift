@@ -29,8 +29,10 @@ final class PhotoSearchView: BaseView {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 2
         layout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width-48)/2, height: 220)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width-34)/2, height: 220)
         
         return layout
     }())

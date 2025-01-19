@@ -51,11 +51,14 @@ final class SortButton: UIButton {
     
     func configHandler(_ button: UIButton) -> Void {
         print(button.state)
+        let button = button as! SortButton
         switch button.state {
         case .selected:
+            button.option = .relevant
             button.configuration?.title = SortOption.relevant.rawValue
             button.configuration?.image = UIImage(systemName: "1.circle")
         case .normal:
+            button.option = .latest
             button.configuration?.title = SortOption.latest.rawValue
             button.configuration?.image = UIImage(systemName: "2.circle")
         default : break
@@ -65,7 +68,7 @@ final class SortButton: UIButton {
     
     enum SortOption: String {
         ///정확도
-        case relevant = "정확도"
+        case relevant = "관련순"
         ///날짜순
         case latest = "최신순"
         var fetchString: String {

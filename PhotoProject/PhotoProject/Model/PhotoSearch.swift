@@ -11,7 +11,7 @@ import Foundation
 struct PhotoSearchResponse: Decodable {
     var total: Int
     var total_pages: Int
-    let results: [Photo]
+    var results: [Photo]
 }
 
 

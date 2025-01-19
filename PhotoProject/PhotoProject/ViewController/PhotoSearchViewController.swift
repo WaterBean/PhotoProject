@@ -12,7 +12,7 @@ final class PhotoSearchViewController: UIViewController {
     
     let mainView = PhotoSearchView()
     
-    private let searchBar = {
+    private let searchController = {
         let bar = UISearchController()
         bar.searchBar.placeholder = "키워드 검색"
         bar.automaticallyShowsCancelButton = false
@@ -20,14 +20,14 @@ final class PhotoSearchViewController: UIViewController {
         return bar
     }()
     
-    var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 1, results: []) {
+    var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 0, results: []) {
         didSet {
             mainView.collectionView.reloadData()
-            print(photoResponseList)
         }
     }
     
     var page = 1
+    var color: Color = .black
     
     override func loadView() {
         view = mainView
@@ -40,24 +40,24 @@ final class PhotoSearchViewController: UIViewController {
         
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
-        //        mainView.collectionView.prefetchDataSource = self
-        navigationItem.searchController = searchBar
+        mainView.collectionView.prefetchDataSource = self
+        navigationItem.searchController = searchController
         navigationItem.searchController?.delegate = self
         navigationItem.searchController?.searchBar.delegate = self
         mainView.sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
     
-    func searchPhotos(text: String) {
-        if page <= photoResponseList.total_pages {
-            NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: .latest, color: .black) {
-                self.photoResponseList = $0
-            }
+    func searchPhotos() {
+        guard let text = searchController.searchBar.text else { print("SearchBar something wrong"); return }
+        NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: mainView.sortButton.option, color: color) {
+            self.photoResponseList = $0
         }
+        
     }
     
     @objc func sortButtonTapped(_ sender: SortButton) {
         sender.isSelected.toggle()
-//        sender.option.fetchString
+        searchPhotos()
     }
     
 }
@@ -88,19 +88,19 @@ extension PhotoSearchViewController: UICollectionViewDelegate, UICollectionViewD
 
 extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print(#function, indexPaths, self.photoResponseList.results.count)
-        guard let text = navigationItem.title else { return }
-        //        guard enableStartRange ~= photoResponseList.start else {
-        //            print("현재가 마지막 페이지임")
-        //            return
-        //        }
+        print(#function, indexPaths, self.photoResponseList.results.count, self.photoResponseList.total_pages, page)
+        guard let text = searchController.searchBar.text else { return }
+        guard 0...photoResponseList.total_pages ~= page else {
+            print("현재가 마지막 페이지임")
+            return
+        }
         //        if NetworkManager.shared.status == .satisfied {
-        if indexPaths[0].item >= photoResponseList.results.count - 8 {
-            //                self.item?.start += 30
-            NetworkManager.shared.fetchSearchPhotos(query: text, page: 2, order_by: .latest, color: .blue) {
-                let fetchedItems = $0
-                //                    self.item?.items.append(contentsOf: fetchedItems.items)
-                //                    self.item?.start = fetchedItems.start
+        if let item = indexPaths.last?.item {
+            if item >= photoResponseList.results.count - 8 {
+                self.page += 1
+                NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: mainView.sortButton.option, color: self.color) {
+                    self.photoResponseList.results.append(contentsOf: $0.results)
+                }
             }
         }
         //        }
@@ -124,6 +124,6 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 
 extension PhotoSearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchPhotos(text: searchBar.text!)
+        searchPhotos()
     }
 }
