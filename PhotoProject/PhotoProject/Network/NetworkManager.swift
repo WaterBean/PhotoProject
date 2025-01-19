@@ -29,6 +29,50 @@ final class NetworkManager {
                 
             }
     }
+    
+    
+    func fetchTopicPhotos(topic: Topic, page: Int = 1, completion: @escaping ([Photo]) -> Void ) {
+        let endpoint = "https://api.unsplash.com/topics/\(topic.rawValue)/photos"
+        let parameters: Parameters = ["page": 1, "per_page": 10, "client_id": APIKey.photoAccessKey]
+        
+        AF.request(endpoint, parameters: parameters)
+            .validate()
+            .responseDecodable(of: [Photo].self) { response in
+                switch response.result {
+                case .success(let result):
+                    completion(result)
+                case . failure(let error):
+                    print(error)
+                    break
+                }
+                
+            }
+    }
+    
+    
+    func fetchStatistics(id: String, page: Int = 1, completion: @escaping (PhotoStatisticsResponse) -> Void ) {
+        let endpoint = "https://api.unsplash.com/photos/\(id)/statistics"
+        let parameters: Parameters = ["client_id": APIKey.photoAccessKey]
+        
+        AF.request(endpoint, parameters: parameters)
+            .validate()
+            .responseDecodable(of: PhotoStatisticsResponse.self) { response in
+                switch response.result {
+                case .success(let result):
+                    print(result)
+                    completion(result)
+                case . failure(let error):
+                    print(error)
+                    break
+                }
+                
+            }
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -40,4 +84,11 @@ enum Color: String {
     case purple
     case green
     case blue
+}
+
+enum Topic: String {
+    case goldenHour = "golden-hour"
+    case businessWork = "business-work"
+    case architectureInterior = "architecture-interior"
+
 }

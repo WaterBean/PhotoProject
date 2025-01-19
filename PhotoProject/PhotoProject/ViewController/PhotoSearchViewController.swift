@@ -77,7 +77,7 @@ extension PhotoSearchViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else {
             return PhotoCollectionViewCell()
         }
-        cell.updateCell(image: item.urls.raw)
+        cell.updateCell(image: item.urls.raw, star: item.likes)
         return cell
     }
     
@@ -120,6 +120,7 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = PhotoDetailsViewController()
+        vc.photo = photoResponseList.results[indexPath.item]
         let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         navigationItem.backBarButtonItem = backBarButtonItem
@@ -134,6 +135,7 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 
 extension PhotoSearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        page = 1
         searchPhotos()
     }
 }

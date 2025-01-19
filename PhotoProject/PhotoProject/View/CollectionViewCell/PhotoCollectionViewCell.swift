@@ -18,27 +18,44 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
         return image
     }()
     
+    private let starButton = {
+        let button = UIButton()
+        button.configuration = UIButton.Configuration.filled()
+        var config = button.configuration
+        config?.image = UIImage(systemName: "star.fill")
+        config?.imagePadding = 6
+        config?.cornerStyle = .capsule
+        config?.baseForegroundColor = .yellow
+        config?.background.backgroundColor = .darkGray
+        button.configuration = config
+        
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureHierarchy()
         configureLayout()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func configureHierarchy() {
         contentView.addSubview(photoImageView)
+        contentView.addSubview(starButton)
     }
     
     override func configureLayout() {
         photoImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        starButton.snp.makeConstraints {
+            $0.leading.bottom.equalToSuperview().inset(20)
+        }
     }
     
-    func updateCell(image: String) {
+    func updateCell(image: String, star: Int) {
         photoImageView.kf.setImage(with: URL(string: image))
+        starButton.setTitle(star.formatted(.number), for: .normal)
     }
+    
+    
 }
