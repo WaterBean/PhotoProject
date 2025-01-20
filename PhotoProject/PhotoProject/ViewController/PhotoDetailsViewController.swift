@@ -12,7 +12,6 @@ import SnapKit
 
 final class PhotoDetailsViewController: UIViewController {
     
-    let mainView = PhotoDetailsView()
     var photo: Photo?
     var response: PhotoStatisticsResponse? {
         didSet {
@@ -21,6 +20,7 @@ final class PhotoDetailsViewController: UIViewController {
         }
     }
     
+    let mainView = PhotoDetailsView()
     override func loadView() {
         view = mainView
     }
@@ -45,6 +45,8 @@ final class PhotoDetailsViewController: UIViewController {
         mainView.sizeTitleLabel.text = "크기"
         mainView.sizeNumberLabel.text = "\(photo!.width) x \(photo!.width)"
         mainView.chartLabel.text = "차트"
+        
+        
         mainView.imageView.snp.remakeConstraints {
             $0.top.equalTo(mainView.profileImage.snp.bottom).offset(10)
             $0.horizontalEdges.equalTo(mainView.contentView)

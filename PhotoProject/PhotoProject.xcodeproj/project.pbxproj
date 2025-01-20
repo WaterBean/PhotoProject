@@ -33,6 +33,7 @@
 		55E4B2C12D3D69F80033993E /* TrendingPhotosByTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B2C02D3D69F80033993E /* TrendingPhotosByTopicView.swift */; };
 		55E4B3332D3DCD4E0033993E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3322D3DCD4E0033993E /* DateFormatter.swift */; };
 		55E4B35E2D3E272B0033993E /* PhotoStatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B35D2D3E272B0033993E /* PhotoStatisticsResponse.swift */; };
+		55E4B3602D3E34EF0033993E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B35F2D3E34EF0033993E /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		55E4B2C02D3D69F80033993E /* TrendingPhotosByTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPhotosByTopicView.swift; sourceTree = "<group>"; };
 		55E4B3322D3DCD4E0033993E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		55E4B35D2D3E272B0033993E /* PhotoStatisticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsResponse.swift; sourceTree = "<group>"; };
+		55E4B35F2D3E34EF0033993E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				557248272D3CC2F8006C19CF /* Network */,
 				557248312D3CDAD1006C19CF /* Config */,
 				55E4B3322D3DCD4E0033993E /* DateFormatter.swift */,
+				55E4B35F2D3E34EF0033993E /* Color.swift */,
 			);
 			path = PhotoProject;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				557248332D3CDC62006C19CF /* APIKey.swift in Sources */,
 				55072E852D3BEAAC00CB8107 /* NetworkManager.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
+				55E4B3602D3E34EF0033993E /* Color.swift in Sources */,
 				5572483F2D3D0390006C19CF /* PhotoDetailsViewController.swift in Sources */,
 				55E4B2C12D3D69F80033993E /* TrendingPhotosByTopicView.swift in Sources */,
 				55072E7F2D3A88E700CB8107 /* PhotoSearchView.swift in Sources */,

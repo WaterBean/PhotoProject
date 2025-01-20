@@ -10,6 +10,7 @@ import UIKit
 final class SortButton: UIButton {
         
     var option = SortOption.relevant
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -20,10 +21,17 @@ final class SortButton: UIButton {
         config.title = option.rawValue
         config.background.backgroundColor = .white
         config.baseForegroundColor = .black
+        config.image = UIImage(systemName: "line.3.horizontal.decrease.circle")
+        config.cornerStyle = .capsule
+        config.titlePadding = 4
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize.zero
+        layer.shadowRadius = 3
+
         configuration = config
         configurationUpdateHandler = configHandler(_:)
-        layer.cornerRadius = 22
-        clipsToBounds = true
+        layer.masksToBounds = false
         isSelected = false
     }
     
@@ -38,12 +46,11 @@ final class SortButton: UIButton {
         switch button.state {
         case .selected:
             button.option = .relevant
-            button.configuration?.title = SortOption.relevant.rawValue
-            button.configuration?.image = UIImage(systemName: "1.circle")
+            button.configuration?.attributedTitle = AttributedString(NSAttributedString(string: SortOption.relevant.rawValue, attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .bold)]))
         case .normal:
             button.option = .latest
-            button.configuration?.title = SortOption.latest.rawValue
-            button.configuration?.image = UIImage(systemName: "2.circle")
+            button.configuration?.attributedTitle = AttributedString(NSAttributedString(string: SortOption.latest.rawValue, attributes: [.font: UIFont.systemFont(ofSize: 16, weight: .bold)]))
+
         default : break
         }
         

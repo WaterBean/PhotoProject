@@ -25,8 +25,17 @@ final class PhotoSearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
+    let optionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 2
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 100)
+        layout.itemSize = CGSize(width: 100, height: 44)
+        return layout
+    }())
     
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: {
+    let searchCollectionView = UICollectionView(frame: .zero, collectionViewLayout: {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 0
@@ -41,16 +50,13 @@ final class PhotoSearchView: BaseView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        configureHierarchy()
-        configureLayout()
-        configureView()
     }
     
     override func configureHierarchy() {
         addSubview(searchStatusLabel)
         addSubview(optionView)
-        addSubview(collectionView)
+        addSubview(searchCollectionView)
+        optionView.addSubview(optionCollectionView)
         optionView.addSubview(sortButton)
     }
     
@@ -65,6 +71,10 @@ final class PhotoSearchView: BaseView {
             $0.height.equalTo(50)
         }
         
+        optionCollectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         sortButton.snp.makeConstraints {
             $0.trailing.equalTo(safeAreaLayoutGuide).offset(12)
             $0.verticalEdges.equalToSuperview().inset(4)
@@ -72,15 +82,21 @@ final class PhotoSearchView: BaseView {
             
         }
         
-        collectionView.snp.makeConstraints {
+        searchCollectionView.snp.makeConstraints {
             $0.top.equalTo(optionView.snp.bottom)
             $0.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
     override func configureView() {
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
-        collectionView.backgroundColor = .clear
+        optionCollectionView.register(ColorCollectionViewCell.self, forCellWithReuseIdentifier: "ColorCollectionViewCell")
+        optionCollectionView.backgroundColor = .clear
+        optionCollectionView.tag = 0
+        optionCollectionView.allowsSelection = true
+        optionCollectionView.showsHorizontalScrollIndicator = false
+        searchCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
+        searchCollectionView.backgroundColor = .clear
+        searchCollectionView.tag = 1
     }
     
     

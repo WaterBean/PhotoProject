@@ -14,8 +14,8 @@ final class NetworkManager {
     
     func fetchSearchPhotos(query: String, page: Int, per_page: Int = 20, order_by: SortButton.SortOption, color: Color, completion: @escaping (PhotoSearchResponse) -> Void ) {
         let endpoint = "https://api.unsplash.com/search/photos"
-        let parameters: Parameters = ["query": query, "page": page, "per_page": per_page, "order_by": order_by.fetchString, "color": color.rawValue, "client_id": APIKey.photoAccessKey]
-        
+        let parameters: Parameters = ["query": query, "page": page, "per_page": per_page, "order_by": order_by.fetchString, "color": color.fetchString, "client_id": APIKey.photoAccessKey]
+        print(parameters)
         AF.request(endpoint, parameters: parameters)
             .validate()
             .responseDecodable(of: PhotoSearchResponse.self) { response in
@@ -76,15 +76,6 @@ final class NetworkManager {
 }
 
 
-enum Color: String {
-    case black
-    case white
-    case yellow
-    case red
-    case purple
-    case green
-    case blue
-}
 
 enum Topic: String {
     case goldenHour = "golden-hour"
