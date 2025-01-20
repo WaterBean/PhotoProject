@@ -28,7 +28,7 @@ final class PhotoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.nameLabel.text = photo?.user.name
-        mainView.dateLabel.text = photo?.created_at
+        mainView.dateLabel.text = DataFormatterManager.formatted(string: photo!.created_at)
 //        mainView.imageView.kf.setImage(with: URL(string: photo!.urls.raw))
         mainView.imageView.kf.setImage(with:  URL(string: photo!.urls.raw)) { response in
             switch response {

@@ -31,6 +31,7 @@
 		5572483F2D3D0390006C19CF /* PhotoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */; };
 		5572487D2D3D34C8006C19CF /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5572487C2D3D34C8006C19CF /* SortButton.swift */; };
 		55E4B2C12D3D69F80033993E /* TrendingPhotosByTopicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B2C02D3D69F80033993E /* TrendingPhotosByTopicView.swift */; };
+		55E4B3332D3DCD4E0033993E /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3322D3DCD4E0033993E /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailsViewController.swift; sourceTree = "<group>"; };
 		5572487C2D3D34C8006C19CF /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		55E4B2C02D3D69F80033993E /* TrendingPhotosByTopicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingPhotosByTopicView.swift; sourceTree = "<group>"; };
+		55E4B3322D3DCD4E0033993E /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				55072E3B2D3A870700CB8107 /* ViewController */,
 				557248272D3CC2F8006C19CF /* Network */,
 				557248312D3CDAD1006C19CF /* Config */,
+				55E4B3322D3DCD4E0033993E /* DateFormatter.swift */,
 			);
 			path = PhotoProject;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E4B3332D3DCD4E0033993E /* DateFormatter.swift in Sources */,
 				557248292D3CC458006C19CF /* TabBarViewController.swift in Sources */,
 				55072E332D3A869200CB8107 /* AppDelegate.swift in Sources */,
 				55072E342D3A869200CB8107 /* SceneDelegate.swift in Sources */,

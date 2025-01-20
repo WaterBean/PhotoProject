@@ -24,22 +24,74 @@ final class PhotoDetailsView: BaseView {
         image.layer.cornerRadius = 22
         return image
     }()
-    let nameLabel = UILabel()
-    let dateLabel = UILabel()
+
+    let nameLabel = {
+        let label = UILabel()
+        return label
+    }()
+
+    let dateLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        return label
+    }()
+
     let imageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         return image
     }()
-    let sizeTitleLabel = UILabel()
-    let viewsTitleLabel = UILabel()
-    let downloadTitleLabel = UILabel()
-    let sizeNumberLabel = UILabel()
-    let viewsNumberLabel = UILabel()
-    let downloadNumberLabel = UILabel()
-    let infoTitleLabel = UILabel()
+
+    let infoTitleLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
     
-    let chartLabel = UILabel()
+    let sizeTitleLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+
+    let viewsTitleLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    let downloadTitleLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14, weight: .bold)
+        return label
+    }()
+    
+    let sizeNumberLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let viewsNumberLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let downloadNumberLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.textColor = .gray
+        return label
+    }()
+    
+    let chartLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
     
     override func configureHierarchy() {
         addSubview(scrollView)
@@ -81,7 +133,6 @@ final class PhotoDetailsView: BaseView {
 
         imageView.snp.makeConstraints {
             $0.top.equalTo(profileImage.snp.bottom).offset(10)
-            
             $0.horizontalEdges.equalTo(contentView)
             $0.height.equalTo(200)
         }
