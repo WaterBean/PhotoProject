@@ -112,7 +112,7 @@
 				55072E3B2D3A870700CB8107 /* ViewController */,
 				557248272D3CC2F8006C19CF /* Network */,
 				557248312D3CDAD1006C19CF /* Config */,
-				55E4B3322D3DCD4E0033993E /* DateFormatter.swift */,
+				55E4B3BD2D3FF5B80033993E /* Util */,
 				55E4B35F2D3E34EF0033993E /* Color.swift */,
 			);
 			path = PhotoProject;
@@ -209,6 +209,14 @@
 				5572487C2D3D34C8006C19CF /* SortButton.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		55E4B3BD2D3FF5B80033993E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				55E4B3322D3DCD4E0033993E /* DateFormatter.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
