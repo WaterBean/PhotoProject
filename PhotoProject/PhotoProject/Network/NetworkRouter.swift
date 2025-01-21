@@ -14,6 +14,7 @@ enum NetworkRouter: URLRequestConvertible {
     case searchPhotos(query: String, page: Int, per_page: Int , order_by: SortButton.SortOption, color: Color)
     case topicPhotos(topic: Topic.RawValue, page: Int = 1, per_page: Int = 10)
     case photoStatics(id: String)
+    case randomPhoto(count: Int)
     
     var baseURL: URL {
         URL(string: "https://api.unsplash.com/")!
@@ -31,6 +32,8 @@ enum NetworkRouter: URLRequestConvertible {
             return "topics/\(topic)/photos"
         case let .photoStatics(id: id):
             return "photos/\(id)/statistics"
+        case .randomPhoto(_):
+            return "random"
         }
     }
     
@@ -46,6 +49,8 @@ enum NetworkRouter: URLRequestConvertible {
             nil
         case .photoStatics(_):
             nil
+        case .randomPhoto(count: let count):
+            ["count": count]
         }
     }
     
@@ -58,8 +63,6 @@ enum NetworkRouter: URLRequestConvertible {
         }
     }
 
-    
-        
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url)
@@ -72,8 +75,7 @@ enum NetworkRouter: URLRequestConvertible {
         if let parameters = parameters {
             return try encoding.encode(urlRequest, with: parameters)
         }
-        
-        
+                
         return urlRequest
 
     }

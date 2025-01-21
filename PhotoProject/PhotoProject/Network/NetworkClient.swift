@@ -10,9 +10,7 @@ import Alamofire
 
 
 final class NetworkClient {
-    static let shared = NetworkClient()
     private init () {}
-    
     static func request<T>(_ decodable: T.Type,
                            router: NetworkRouter,
                            success: @escaping (T)-> Void,

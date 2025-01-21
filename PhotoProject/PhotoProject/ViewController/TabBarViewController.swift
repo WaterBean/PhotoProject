@@ -22,11 +22,16 @@ final class TabBarViewController: UITabBarController {
         let nav = UINavigationController(rootViewController: vc)
         return nav
     }()
+    private let randomPhotoViewController = {
+        let vc = RandomPhotoViewController()
+        vc.tabBarItem.image = UIImage(systemName: "movieclapper")
+        return vc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.tintColor = .black
-        setViewControllers([trendingPhotosByTopicViewController, photoSearchViewController], animated: true)
+        setViewControllers([trendingPhotosByTopicViewController, randomPhotoViewController, photoSearchViewController], animated: true)
         
     }
     

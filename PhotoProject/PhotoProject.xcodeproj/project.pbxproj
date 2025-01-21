@@ -35,6 +35,8 @@
 		55E4B35E2D3E272B0033993E /* PhotoStatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B35D2D3E272B0033993E /* PhotoStatisticsResponse.swift */; };
 		55E4B3602D3E34EF0033993E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B35F2D3E34EF0033993E /* Color.swift */; };
 		55E4B3B62D3F85A10033993E /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B52D3F85A10033993E /* NetworkRouter.swift */; };
+		55E4B3B82D3FEB6C0033993E /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B72D3FEB6C0033993E /* RandomPhotoViewController.swift */; };
+		55E4B3BA2D3FEC210033993E /* RandomPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		55E4B35D2D3E272B0033993E /* PhotoStatisticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStatisticsResponse.swift; sourceTree = "<group>"; };
 		55E4B35F2D3E34EF0033993E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		55E4B3B52D3F85A10033993E /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		55E4B3B72D3FEB6C0033993E /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
+		55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				557248282D3CC458006C19CF /* TabBarViewController.swift */,
+				55E4B3B72D3FEB6C0033993E /* RandomPhotoViewController.swift */,
 				55072E312D3A869200CB8107 /* PhotoSearchViewController.swift */,
 				5572482A2D3CC668006C19CF /* TrendingPhotosByTopicViewController.swift */,
 				5572483E2D3D0390006C19CF /* PhotoDetailsViewController.swift */,
@@ -190,6 +195,7 @@
 			children = (
 				55072E822D3BE75E00CB8107 /* PhotoCollectionViewCell.swift */,
 				557248342D3CE6B3006C19CF /* ColorCollectionViewCell.swift */,
+				55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E4B3BA2D3FEC210033993E /* RandomPhotoCollectionViewCell.swift in Sources */,
 				55E4B3332D3DCD4E0033993E /* DateFormatter.swift in Sources */,
 				557248292D3CC458006C19CF /* TabBarViewController.swift in Sources */,
 				55E4B3B62D3F85A10033993E /* NetworkRouter.swift in Sources */,
@@ -297,6 +304,7 @@
 				55E4B35E2D3E272B0033993E /* PhotoStatisticsResponse.swift in Sources */,
 				557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */,
 				557248332D3CDC62006C19CF /* APIKey.swift in Sources */,
+				55E4B3B82D3FEB6C0033993E /* RandomPhotoViewController.swift in Sources */,
 				55072E852D3BEAAC00CB8107 /* NetworkClient.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
 				55E4B3602D3E34EF0033993E /* Color.swift in Sources */,
