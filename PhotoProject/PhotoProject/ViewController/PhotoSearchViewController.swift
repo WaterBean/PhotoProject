@@ -11,6 +11,7 @@ import Kingfisher
 final class PhotoSearchViewController: UIViewController {
     
     let mainView = PhotoSearchView()
+    let buttonStatus = \PhotoSearchViewController.mainView.sortButton.option
     typealias CollectionViewWithTag = (collection: UICollectionView , tag: Int)
     private lazy var optionCollection: CollectionViewWithTag = (collection: mainView.optionCollectionView, mainView.optionCollectionView.tag)
     private lazy var searchCollection: CollectionViewWithTag = (collection: mainView.searchCollectionView, mainView.searchCollectionView.tag)
@@ -61,9 +62,13 @@ final class PhotoSearchViewController: UIViewController {
     
     func searchPhotos() {
         guard let text = searchController.searchBar.text else { print("SearchBar something wrong"); return }
-        NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: mainView.sortButton.option, color: selectedColor) {
+        
+        NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: page, per_page: 20, order_by: mainView.sortButton.option, color: selectedColor)) {
+            print("응담완")
             self.photoResponseList = $0
             self.mainView.searchStatusLabel.text = $0.total == 0 ? "검색 결과가 없습니다." : ""
+        } failure: { error in
+            
         }
         
     }
@@ -143,8 +148,9 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
         if let item = indexPaths.last?.item {
             if item >= photoResponseList.results.count - 8 {
                 self.page += 1
-                NetworkManager.shared.fetchSearchPhotos(query: text, page: page, order_by: mainView.sortButton.option, color: selectedColor) {
+                NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: 1, per_page: 20, order_by: mainView.sortButton.option, color: selectedColor)) {
                     self.photoResponseList.results.append(contentsOf: $0.results)
+                } failure: { error in
                 }
             }
         }

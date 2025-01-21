@@ -7,9 +7,7 @@
 
 import Foundation
 
-final class APIKey {
-    private init() { }
-
+enum APIKey {
     static let photoAppId = Bundle.main.object(forInfoDictionaryKey: "PHOTO_APP_ID") as! String
     static let photoSecretKey = Bundle.main.object(forInfoDictionaryKey: "PHOTO_SECRET_KEY") as! String
     static let photoAccessKey = Bundle.main.object(forInfoDictionaryKey: "PHOTO_ACCESS_KEY") as! String
