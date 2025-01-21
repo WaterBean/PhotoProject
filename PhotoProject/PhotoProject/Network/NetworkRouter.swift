@@ -33,7 +33,7 @@ enum NetworkRouter: URLRequestConvertible {
         case let .photoStatics(id: id):
             return "photos/\(id)/statistics"
         case .randomPhoto(_):
-            return "random"
+            return "photos/random"
         }
     }
     

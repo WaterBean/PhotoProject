@@ -27,12 +27,13 @@ final class PhotoDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: true)
         mainView.nameLabel.text = photo?.user.name
         mainView.dateLabel.text = DataFormatterManager.formatted(string: photo!.created_at)
 //        mainView.imageView.kf.setImage(with: URL(string: photo!.urls.raw))
         mainView.imageView.kf.setImage(with:  URL(string: photo!.urls.raw)) { response in
             switch response {
-            case .success(let result):
+            case .success(_):
                 self.mainView.updateConstraintsIfNeeded()
                 self.mainView.layoutIfNeeded()
             case .failure(let error): print(error)
@@ -55,9 +56,6 @@ final class PhotoDetailsViewController: UIViewController {
             $0.leading.equalTo(mainView.contentView).inset(20)
         }
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.view.layoutIfNeeded()
-        }
     }
     
 }

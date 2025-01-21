@@ -22,10 +22,13 @@ final class TabBarViewController: UITabBarController {
         let nav = UINavigationController(rootViewController: vc)
         return nav
     }()
+    
     private let randomPhotoViewController = {
         let vc = RandomPhotoViewController()
         vc.tabBarItem.image = UIImage(systemName: "movieclapper")
-        return vc
+        let nav = UINavigationController(rootViewController: vc)
+
+        return nav
     }()
     
     override func viewDidLoad() {

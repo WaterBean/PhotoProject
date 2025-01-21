@@ -37,6 +37,7 @@
 		55E4B3B62D3F85A10033993E /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B52D3F85A10033993E /* NetworkRouter.swift */; };
 		55E4B3B82D3FEB6C0033993E /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B72D3FEB6C0033993E /* RandomPhotoViewController.swift */; };
 		55E4B3BA2D3FEC210033993E /* RandomPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */; };
+		55E4B3BC2D3FEE030033993E /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3BB2D3FEE030033993E /* RandomPhotoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		55E4B3B52D3F85A10033993E /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		55E4B3B72D3FEB6C0033993E /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
 		55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		55E4B3BB2D3FEE030033993E /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				55072E7E2D3A88E700CB8107 /* PhotoSearchView.swift */,
 				55E4B2C02D3D69F80033993E /* TrendingPhotosByTopicView.swift */,
 				557248392D3D0241006C19CF /* PhotoDetailsView.swift */,
+				55E4B3BB2D3FEE030033993E /* RandomPhotoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				557248352D3CE6B3006C19CF /* ColorCollectionViewCell.swift in Sources */,
 				557248332D3CDC62006C19CF /* APIKey.swift in Sources */,
 				55E4B3B82D3FEB6C0033993E /* RandomPhotoViewController.swift in Sources */,
+				55E4B3BC2D3FEE030033993E /* RandomPhotoView.swift in Sources */,
 				55072E852D3BEAAC00CB8107 /* NetworkClient.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
 				55E4B3602D3E34EF0033993E /* Color.swift in Sources */,

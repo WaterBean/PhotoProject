@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 final class RandomPhotoCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = {
         let view = UIImageView()
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -19,7 +21,9 @@ final class RandomPhotoCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureLayout() {
-        
+        imageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
     override func configureView() {
         
