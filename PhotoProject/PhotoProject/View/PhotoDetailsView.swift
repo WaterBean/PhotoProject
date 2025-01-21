@@ -184,6 +184,9 @@ final class PhotoDetailsView: BaseView {
     
     
     override func configureView() {
-        
+        infoTitleLabel.text = "정보"
+        downloadTitleLabel.text = "다운로드"
+        viewsTitleLabel.text = "조회수"
+        sizeTitleLabel.text = "크기"
     }
 }

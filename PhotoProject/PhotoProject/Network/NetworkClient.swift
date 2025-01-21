@@ -14,10 +14,10 @@ final class NetworkClient {
     private init () {}
     
     static func request<T>(_ decodable: T.Type,
-                    router: NetworkRouter,
-                    success: @escaping (T)-> Void,
-                    failure: @escaping (_ error: Error) -> Void) where T: Decodable {
-        print(decodable)
+                           router: NetworkRouter,
+                           success: @escaping (T)-> Void,
+                           failure: @escaping (_ error: Error) -> Void) where T: Decodable {
+        
         AF.request(router)
             .validate(statusCode: 200..<500)
             .responseString(completionHandler: {
@@ -26,17 +26,12 @@ final class NetworkClient {
             .responseDecodable(of: decodable) { response in
                 switch response.result {
                 case .success(let result):
-                    print(result)
                     success(result)
                 case .failure(let error):
-                    print(error)
-                    
                     failure(error)
                 }
             }
-        
     }
-    
     
     
 }
@@ -47,5 +42,5 @@ enum Topic: String {
     case goldenHour = "golden-hour"
     case businessWork = "business-work"
     case architectureInterior = "architecture-interior"
-
+    
 }

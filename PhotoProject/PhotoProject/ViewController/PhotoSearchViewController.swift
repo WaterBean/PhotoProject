@@ -11,11 +11,12 @@ import Kingfisher
 final class PhotoSearchViewController: UIViewController {
     
     let mainView = PhotoSearchView()
-    let buttonStatus = \PhotoSearchViewController.mainView.sortButton.option
+    let order_by = \PhotoSearchViewController.mainView.sortButton.option
+    let group = DispatchGroup()
     typealias CollectionViewWithTag = (collection: UICollectionView , tag: Int)
-    private lazy var optionCollection: CollectionViewWithTag = (collection: mainView.optionCollectionView, mainView.optionCollectionView.tag)
+    private lazy var colorCollection: CollectionViewWithTag = (collection: mainView.colorCollectionView, mainView.colorCollectionView.tag)
     private lazy var searchCollection: CollectionViewWithTag = (collection: mainView.searchCollectionView, mainView.searchCollectionView.tag)
-
+    
     private let searchController = {
         let bar = UISearchController()
         bar.searchBar.placeholder = "키워드 검색"
@@ -24,19 +25,11 @@ final class PhotoSearchViewController: UIViewController {
         return bar
     }()
     
-    var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 0, results: []) {
-        didSet {
-            searchCollection.collection.reloadData()
-        }
-    }
+    var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 0, results: [])
     
     var page = 1
     let colorList = Color.allCases
-    var selectedColor = Color.black {
-        didSet {
-            print(selectedColor)
-        }
-    }
+    var selectedColor = Color.black
     
     override func loadView() {
         view = mainView
@@ -50,9 +43,9 @@ final class PhotoSearchViewController: UIViewController {
         searchCollection.collection.delegate = self
         searchCollection.collection.dataSource = self
         searchCollection.collection.prefetchDataSource = self
-        optionCollection.collection.delegate = self
-        optionCollection.collection.dataSource = self
-        optionCollection.collection.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .left)
+        colorCollection.collection.delegate = self
+        colorCollection.collection.dataSource = self
+        colorCollection.collection.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .left)
         
         navigationItem.searchController = searchController
         navigationItem.searchController?.delegate = self
@@ -61,16 +54,16 @@ final class PhotoSearchViewController: UIViewController {
     }
     
     func searchPhotos() {
+        page = 1
         guard let text = searchController.searchBar.text else { print("SearchBar something wrong"); return }
-        
-        NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: page, per_page: 20, order_by: mainView.sortButton.option, color: selectedColor)) {
-            print("응담완")
+        NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: self.page, per_page: 20, order_by: self[keyPath: self.order_by], color: self.selectedColor)) {
             self.photoResponseList = $0
-            self.mainView.searchStatusLabel.text = $0.total == 0 ? "검색 결과가 없습니다." : ""
+            self.mainView.searchStatusLabel.text = self.photoResponseList.total == 0 ? "검색 결과가 없습니다." : ""
+            self.searchCollection.collection.reloadData()
+            
         } failure: { error in
             
         }
-        
     }
     
     @objc func sortButtonTapped(_ sender: SortButton) {
@@ -87,32 +80,32 @@ final class PhotoSearchViewController: UIViewController {
 extension PhotoSearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return switch collectionView.tag {
-        case optionCollection.tag: colorList.count
+        case colorCollection.tag: colorList.count
         case searchCollection.tag: photoResponseList.results.count
         default: 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView.tag == optionCollection.tag{
+        if collectionView.tag == colorCollection.tag{
             let item = colorList[indexPath.item]
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ColorCollectionViewCell", for: indexPath) as? ColorCollectionViewCell else { return ColorCollectionViewCell() }
             cell.updateCell(color: item)
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else { return PhotoCollectionViewCell()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else { return PhotoCollectionViewCell() }
             let item = photoResponseList.results[indexPath.item]
-            cell.updateCell(image: item.urls.raw, star: item.likes)
+            cell.updateCell(image: item.urls.small, star: item.likes)
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView.tag == optionCollection.tag {
+        if collectionView.tag == colorCollection.tag {
             guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell else { return }
             cell.backView.backgroundColor = .systemBlue
             selectedColor = colorList[indexPath.item]
-            
+            searchPhotos()
         } else {
             let vc = PhotoDetailsViewController()
             vc.photo = photoResponseList.results[indexPath.item]
@@ -128,7 +121,6 @@ extension PhotoSearchViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? ColorCollectionViewCell else { return }
         cell.backView.backgroundColor = .white
-
     }
     
 }
@@ -141,23 +133,22 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
         print(#function, indexPaths, self.photoResponseList.results.count, self.photoResponseList.total_pages, page)
         guard let text = searchController.searchBar.text else { return }
         guard 0...photoResponseList.total_pages ~= page else {
-            print("현재가 마지막 페이지임")
             return
         }
-        //        if NetworkManager.shared.status == .satisfied {
+        
         if let item = indexPaths.last?.item {
-            if item >= photoResponseList.results.count - 8 {
+            if item >= photoResponseList.results.count - 12 {
                 self.page += 1
-                NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: 1, per_page: 20, order_by: mainView.sortButton.option, color: selectedColor)) {
+                NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: self.page, per_page: 20, order_by: self[keyPath: order_by], color: selectedColor)) {
                     self.photoResponseList.results.append(contentsOf: $0.results)
+                    self.searchCollection.collection.reloadData()
                 } failure: { error in
+                    print(error)
+                    
                 }
+                
             }
         }
-        //        }
-        //    else {
-        //            present(AlertManager.simpleAlert(title: "네트워크 연결 불가", message: "와이파이나 데이터 연결을 확인해주세요."), animated: true)
-        //        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
@@ -165,10 +156,9 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
             guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell else { return }
             cell.photoImageView.kf.cancelDownloadTask() // 이게 되는지 어떻게 확인?
         }
-        print(#function)
     }
     
-
+    
 }
 
 
@@ -177,7 +167,6 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
 
 extension PhotoSearchViewController: UISearchBarDelegate, UISearchControllerDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        page = 1
         searchPhotos()
     }
 }

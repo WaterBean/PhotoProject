@@ -25,7 +25,7 @@ final class PhotoSearchView: BaseView {
         view.backgroundColor = .clear
         return view
     }()
-    let optionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: {
+    let colorCollectionView = UICollectionView(frame: .zero, collectionViewLayout: {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 0
@@ -42,7 +42,6 @@ final class PhotoSearchView: BaseView {
         layout.minimumLineSpacing = 2
         layout.sectionInset = UIEdgeInsets(top: 16, left: 2, bottom: 16, right: 2)
         layout.itemSize = CGSize(width: (UIScreen.main.bounds.width-6)/2, height: 220)
-        
         return layout
     }())
     
@@ -56,7 +55,7 @@ final class PhotoSearchView: BaseView {
         addSubview(searchStatusLabel)
         addSubview(optionView)
         addSubview(searchCollectionView)
-        optionView.addSubview(optionCollectionView)
+        optionView.addSubview(colorCollectionView)
         optionView.addSubview(sortButton)
     }
     
@@ -71,7 +70,7 @@ final class PhotoSearchView: BaseView {
             $0.height.equalTo(50)
         }
         
-        optionCollectionView.snp.makeConstraints {
+        colorCollectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -89,11 +88,11 @@ final class PhotoSearchView: BaseView {
     }
     
     override func configureView() {
-        optionCollectionView.register(ColorCollectionViewCell.self, forCellWithReuseIdentifier: "ColorCollectionViewCell")
-        optionCollectionView.backgroundColor = .clear
-        optionCollectionView.tag = 0
-        optionCollectionView.allowsSelection = true
-        optionCollectionView.showsHorizontalScrollIndicator = false
+        colorCollectionView.register(ColorCollectionViewCell.self, forCellWithReuseIdentifier: "ColorCollectionViewCell")
+        colorCollectionView.backgroundColor = .clear
+        colorCollectionView.tag = 0
+        colorCollectionView.allowsSelection = true
+        colorCollectionView.showsHorizontalScrollIndicator = false
         searchCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: "PhotoCollectionViewCell")
         searchCollectionView.backgroundColor = .clear
         searchCollectionView.tag = 1

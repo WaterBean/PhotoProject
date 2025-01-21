@@ -39,10 +39,6 @@ final class PhotoDetailsViewController: UIViewController {
             }
         }
         mainView.profileImage.kf.setImage(with: URL(string: photo!.user.profile_image.medium))
-        mainView.infoTitleLabel.text = "정보"
-        mainView.downloadTitleLabel.text = "다운로드"
-        mainView.viewsTitleLabel.text = "조회수"
-        mainView.sizeTitleLabel.text = "크기"
         mainView.sizeNumberLabel.text = "\(photo!.width) x \(photo!.width)"
         mainView.chartLabel.text = "차트"
         
