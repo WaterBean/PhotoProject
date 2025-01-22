@@ -30,15 +30,10 @@ final class PhotoDetailsViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: true)
         mainView.nameLabel.text = photo?.user.name
         mainView.dateLabel.text = DataFormatterManager.formatted(string: photo!.created_at)
-//        mainView.imageView.kf.setImage(with: URL(string: photo!.urls.raw))
-        mainView.imageView.kf.setImage(with:  URL(string: photo!.urls.raw)) { response in
-            switch response {
-            case .success(_):
-                self.mainView.updateConstraintsIfNeeded()
-                self.mainView.layoutIfNeeded()
-            case .failure(let error): print(error)
-            }
-        }
+        mainView.imageView.kf.setImage(with: URL(string: photo!.urls.raw))
+
+        
+        
         mainView.profileImage.kf.setImage(with: URL(string: photo!.user.profile_image.medium))
         mainView.sizeNumberLabel.text = "\(photo!.width) x \(photo!.width)"
         mainView.chartLabel.text = "차트"
@@ -47,7 +42,7 @@ final class PhotoDetailsViewController: UIViewController {
         mainView.imageView.snp.remakeConstraints {
             $0.top.equalTo(mainView.profileImage.snp.bottom).offset(10)
             $0.horizontalEdges.equalTo(mainView.contentView)
-            $0.height.equalTo(Int(UIScreen.main.bounds.width) * (photo!.width/photo!.height))
+            $0.height.equalTo(UIScreen.main.bounds.width)
         }
         
         mainView.infoTitleLabel.snp.makeConstraints {
