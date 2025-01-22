@@ -10,17 +10,17 @@ import Kingfisher
 
 final class TrendingPhotosByTopicViewController: UIViewController {
     
-    var photoList1 = [Photo]()
-    var photoList2 = [Photo]()
-    var photoList3 = [Photo]()
+    private var photoList1 = [Photo]()
+    private var photoList2 = [Photo]()
+    private var photoList3 = [Photo]()
     
     
-    let mainView = TrendingPhotosByTopicView()
+    private let mainView = TrendingPhotosByTopicView()
     override func loadView() {
         view = mainView
     }
     
-    let group = DispatchGroup()
+    private let group = DispatchGroup()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,7 +64,7 @@ final class TrendingPhotosByTopicViewController: UIViewController {
         
         navigationItem.title = "OUR TOPIC"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
+//        navigationController?.navigationItem.largeTitleDisplayMode = .always
         
     }
     

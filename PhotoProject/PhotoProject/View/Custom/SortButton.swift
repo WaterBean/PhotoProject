@@ -40,7 +40,7 @@ final class SortButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configHandler(_ button: UIButton) -> Void {
+    private func configHandler(_ button: UIButton) -> Void {
         print(button.state)
         let button = button as! SortButton
         switch button.state {

@@ -42,25 +42,25 @@ final class PhotoDetailsView: BaseView {
         return image
     }()
 
-    let infoTitleLabel = {
+    private let infoTitleLabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
     
-    let sizeTitleLabel = {
+    private let sizeTitleLabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
 
-    let viewsTitleLabel = {
+    private let viewsTitleLabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
     
-    let downloadTitleLabel = {
+    private let downloadTitleLabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
@@ -87,7 +87,7 @@ final class PhotoDetailsView: BaseView {
         return label
     }()
     
-    let chartLabel = {
+    private let chartLabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
@@ -112,7 +112,7 @@ final class PhotoDetailsView: BaseView {
         }
         
         profileImage.snp.makeConstraints {
-            $0.top.equalTo(contentView).inset(10)
+            $0.top.equalTo(contentView.snp.top).inset(10)
             $0.leading.equalToSuperview().inset(10)
             $0.size.equalTo(44)
         }
@@ -188,5 +188,7 @@ final class PhotoDetailsView: BaseView {
         downloadTitleLabel.text = "다운로드"
         viewsTitleLabel.text = "조회수"
         sizeTitleLabel.text = "크기"
+        chartLabel.text = "차트"
+
     }
 }

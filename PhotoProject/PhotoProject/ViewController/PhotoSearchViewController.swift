@@ -10,9 +10,9 @@ import Kingfisher
 
 final class PhotoSearchViewController: UIViewController {
     
-    let mainView = PhotoSearchView()
-    let order_by = \PhotoSearchViewController.mainView.sortButton.option
-    let group = DispatchGroup()
+    private let mainView = PhotoSearchView()
+    private let order_by = \PhotoSearchViewController.mainView.sortButton.option
+    private let group = DispatchGroup()
     typealias CollectionViewWithTag = (collection: UICollectionView , tag: Int)
     private lazy var colorCollection: CollectionViewWithTag = (collection: mainView.colorCollectionView, mainView.colorCollectionView.tag)
     private lazy var searchCollection: CollectionViewWithTag = (collection: mainView.searchCollectionView, mainView.searchCollectionView.tag)
@@ -25,11 +25,10 @@ final class PhotoSearchViewController: UIViewController {
         return bar
     }()
     
-    var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 0, results: [])
-    
-    var page = 1
-    let colorList = Color.allCases
-    var selectedColor = Color.black
+    private var photoResponseList = PhotoSearchResponse(total: 0, total_pages: 0, results: [])
+    private var page = 1
+    private let colorList = Color.allCases
+    private var selectedColor = Color.black
     
     override func loadView() {
         view = mainView
@@ -53,7 +52,7 @@ final class PhotoSearchViewController: UIViewController {
         mainView.sortButton.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
     }
     
-    func searchPhotos() {
+    private func searchPhotos() {
         page = 1
         guard let text = searchController.searchBar.text else { print("SearchBar something wrong"); return }
         NetworkClient.request(PhotoSearchResponse.self, router: .searchPhotos(query: text, page: self.page, per_page: 20, order_by: self[keyPath: self.order_by], color: self.selectedColor)) {

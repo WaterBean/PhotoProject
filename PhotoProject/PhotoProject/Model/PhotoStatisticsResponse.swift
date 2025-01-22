@@ -6,7 +6,7 @@
 //
 
 
-struct PhotoStatisticsResponse: Decodable {
+struct PhotoStatisticsResponse: Decodable, Identifiable {
     let id: String
     let downloads: Statistics
     let views: Statistics

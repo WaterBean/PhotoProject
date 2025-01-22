@@ -17,7 +17,7 @@ final class ColorCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    let colorView = {
+    private let colorView = {
         let view = UIView()
         view.backgroundColor = .black
         view.clipsToBounds = true

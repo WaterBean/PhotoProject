@@ -20,7 +20,7 @@ final class PhotoSearchView: BaseView {
     
     let sortButton = SortButton(option: .relevant)
     
-    let optionView = {
+    private let optionView = {
         let view = UIView()
         view.backgroundColor = .clear
         return view

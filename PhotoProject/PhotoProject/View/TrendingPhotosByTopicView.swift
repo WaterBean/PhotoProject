@@ -21,19 +21,21 @@ final class TrendingPhotosByTopicView: BaseView {
     lazy var busiCollection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     lazy var archCollection = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
-    let titleLabel1 = {
+    private let titleLabel1 = {
         let label = UILabel()
         label.text = "골든 아워"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
-    let titleLabel2 = {
+    
+    private let titleLabel2 = {
         let label = UILabel()
         label.text = "비즈니스 및 업무"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         return label
     }()
-    let titleLabel3 = {
+    
+    private let titleLabel3 = {
         let label = UILabel()
         label.text = "건축 및 인테리어"
         label.font = .systemFont(ofSize: 18, weight: .bold)
