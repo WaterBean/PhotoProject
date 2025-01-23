@@ -39,6 +39,7 @@
 		55E4B3BA2D3FEC210033993E /* RandomPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */; };
 		55E4B3BC2D3FEE030033993E /* RandomPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E4B3BB2D3FEE030033993E /* RandomPhotoView.swift */; };
 		55EA5A922D410AA200DF7DF0 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA5A912D410AA200DF7DF0 /* ChartView.swift */; };
+		55EA5A942D41A5F700DF7DF0 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EA5A932D41A5F700DF7DF0 /* AlertManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		55E4B3B92D3FEC210033993E /* RandomPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		55E4B3BB2D3FEE030033993E /* RandomPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoView.swift; sourceTree = "<group>"; };
 		55EA5A912D410AA200DF7DF0 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		55EA5A932D41A5F700DF7DF0 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				55E4B3322D3DCD4E0033993E /* DateFormatter.swift */,
+				55EA5A932D41A5F700DF7DF0 /* AlertManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				55072E852D3BEAAC00CB8107 /* NetworkClient.swift in Sources */,
 				55072E352D3A869200CB8107 /* PhotoSearchViewController.swift in Sources */,
 				55E4B3602D3E34EF0033993E /* Color.swift in Sources */,
+				55EA5A942D41A5F700DF7DF0 /* AlertManager.swift in Sources */,
 				5572483F2D3D0390006C19CF /* PhotoDetailsViewController.swift in Sources */,
 				55E4B2C12D3D69F80033993E /* TrendingPhotosByTopicView.swift in Sources */,
 				55072E7F2D3A88E700CB8107 /* PhotoSearchView.swift in Sources */,

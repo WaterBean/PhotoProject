@@ -24,7 +24,7 @@ final class RandomPhotoViewController: UIViewController {
             self.list = $0
             self.mainView.collectionView.reloadData()
         } failure: { error in
-            
+            AlertManager.showErrorAlert(vc: self, message: error.message)
         }
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
@@ -62,7 +62,7 @@ extension RandomPhotoViewController: UICollectionViewDelegate, UICollectionViewD
             self.navigationItem.backBarButtonItem = backBarButtonItem
             self.show(vc, sender: self)
         } failure: { error in
-            
+            AlertManager.showErrorAlert(vc: self, message: error.message)
         }
 
     }

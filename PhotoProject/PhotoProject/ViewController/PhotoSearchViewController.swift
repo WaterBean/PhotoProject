@@ -59,9 +59,8 @@ final class PhotoSearchViewController: UIViewController {
             self.photoResponseList = $0
             self.mainView.searchStatusLabel.text = self.photoResponseList.total == 0 ? "검색 결과가 없습니다." : ""
             self.searchCollection.collection.reloadData()
-            
         } failure: { error in
-            
+            AlertManager.showErrorAlert(vc: self, message: error.message)
         }
     }
     
@@ -142,8 +141,7 @@ extension PhotoSearchViewController: UICollectionViewDataSourcePrefetching {
                     self.photoResponseList.results.append(contentsOf: $0.results)
                     self.searchCollection.collection.reloadData()
                 } failure: { error in
-                    print(error)
-                    
+                    AlertManager.showErrorAlert(vc: self, message: error.message)
                 }
                 
             }

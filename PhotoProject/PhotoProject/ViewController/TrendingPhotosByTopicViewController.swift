@@ -29,6 +29,7 @@ final class TrendingPhotosByTopicViewController: UIViewController {
             self.photoList1 = $0
             self.group.leave()
         } failure: { error in
+            AlertManager.showErrorAlert(vc: self, message: error.message)
             self.group.leave()
         }
         
@@ -37,6 +38,7 @@ final class TrendingPhotosByTopicViewController: UIViewController {
             self.photoList2 = $0
             self.group.leave()
         } failure: { error in
+            AlertManager.showErrorAlert(vc: self, message: error.message)
             self.group.leave()
         }
         
@@ -45,6 +47,7 @@ final class TrendingPhotosByTopicViewController: UIViewController {
             self.photoList3 = $0
             self.group.leave()
         } failure: { error in
+            AlertManager.showErrorAlert(vc: self, message: error.message)
             self.group.leave()
         }
         
@@ -115,7 +118,7 @@ extension TrendingPhotosByTopicViewController: UICollectionViewDelegate, UIColle
             self.navigationItem.backBarButtonItem = backBarButtonItem
             self.show(vc, sender: self)
         } failure: { error in
-            
+            AlertManager.showErrorAlert(vc: self, message: error.message)
         }
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
@@ -124,4 +127,10 @@ extension TrendingPhotosByTopicViewController: UICollectionViewDelegate, UIColle
         
     }
     
+}
+
+enum Topic: String {
+    case goldenHour = "golden-hour"
+    case businessWork = "business-work"
+    case architectureInterior = "architecture-interior"
 }
